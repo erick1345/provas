@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Questionário PQD - CIAvEx</title>
+    <link href="imagens/logo.png" rel="shortcut icon" />
+    <link rel="stylesheet" href="css/PQD.css" />
+  </head>
+  <body>
+    <div class="container">
+      <!-- Coluna 1 -->
+      <div class="column">
+        <div style="text-align: center">
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/3/35/Ciavex.png"
+          />
+          <h2>Questionário PQP - CIAvEx</h2>
+        </div>
+        <div class="input-group">
+          <label>QRA:</label><input type="text" id="qr" style="width: 100%" />
+        </div>
+        <div class="input-group">
+          <label>ID:</label><input type="text" id="id" style="width: 100%" />
+        </div>
+        <div class="input-group">
+          <label>Instrutor:</label
+          ><input type="text" id="instrutor" style="width: 100%" />
+        </div>
+        <div class="input-group">
+          <label>Data:</label
+          ><input type="date" id="data" style="width: 100%" />
+        </div>
+        <div class="resultado-final">
+          <h3>Resultado Final:</h3>
+          <p class="nota-final">
+            Nota Final: <span id="notaFinal">0</span> /11
+          </p>
+          <div class="status" id="statusFinal" class="reprovado">
+            Status: <span id="statusText">Reprovado</span>
+          </div>
+          <div class="input-group" style="margin-top: 15px">
+            <label for="obs">OBS:</label>
+            <textarea
+              id="obs"
+              placeholder="Digite observações aqui..."
+              rows="4"
+              style="width: 100%; resize: none"
+            ></textarea>
+          </div>
+          <!-- Caixa de desconto por falta de conduta -->
+          <div class="input-group">
+            <label for="descontoConduta">Desconto por Falta de Conduta:</label>
+            <input
+              type="number"
+              id="descontoConduta"
+              min="0"
+              max="10"
+              onchange="calcular()"
+            />
+          </div>
+          <!-- Botão para limpar tudo -->
+          <div style="text-align: center; margin-top: 20px">
+            <button onclick="limparTudo()">Limpar Prova</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Coluna 2 -->
+      <div class="column">
+        <div class="input-group" style="margin-top: 15px">
+          <label for="obs"
+            ><h3>TEMPO DE SALTO</h3>
+            <h4>
+              (Caso realize salto com tempo, marque a opção a baixo! Ex: 00:30)
+            </h4></label
+          >
+        </div>
+        <div class="input-group">
+          <input type="checkbox" onclick="calcular()" />
+          <textarea
+            id="obs"
+            placeholder="Tempo"
+            rows="1"
+            style="width: 15%; resize: none"
+          ></textarea>
+        </div>
+        <div class="input-group">
+          <h3>Primeiro Salto:</h3>
+          <p>
+            <input
+              type="checkbox"
+              name="teste30s"
+              value="0"
+              onclick="calcular()"
+            />
+            Errou o Salto
+          </p>
+          <p>
+            <input
+              type="checkbox"
+              name="teste30s"
+              value="2"
+              onclick="calcular()"
+            />
+            Acertou o Salto e chegou com vida
+          </p>
+        </div>
+        <div class="input-group">
+          <h3>Segundo Salto:</h3>
+          <p>
+            <input
+              type="checkbox"
+              name="precisaoReservatorio"
+              value="0"
+              onclick="calcular()"
+            />
+            Errou o Salto
+          </p>
+          <p>
+            <input
+              type="checkbox"
+              name="precisaoReservatorio"
+              value="2"
+              onclick="calcular()"
+            />
+            Acertou o Salto e chegou com vida
+          </p>
+        </div>
+        <div class="input-group">
+          <h3>Terceiro Salto:</h3>
+          <p>
+            <input
+              type="checkbox"
+              name="precisaoLago"
+              value="0"
+              onclick="calcular()"
+            />
+            Errou o Salto
+          </p>
+          <p>
+            <input
+              type="checkbox"
+              name="precisaoLago"
+              value="2"
+              onclick="calcular()"
+            />
+            Acertou o Salto e chegou com vida
+          </p>
+        </div>
+        <div class="input-group">
+          <h3>Quarto Salto:</h3>
+          <p>
+            <input
+              type="checkbox"
+              name="favela1"
+              value="0"
+              onclick="calcular()"
+            />
+            Errou o Salto
+          </p>
+          <p>
+            <input
+              type="checkbox"
+              name="favela1"
+              value="2"
+              onclick="calcular()"
+            />
+            Acertou o Salto e chegou com vida
+          </p>
+        </div>
+        <div class="input-group">
+          <h3>Quinto Salto:</h3>
+          <p>
+            <input
+              type="checkbox"
+              name="favela2"
+              value="0"
+              onclick="calcular()"
+            />
+            Errou o Salto
+          </p>
+          <p>
+            <input
+              type="checkbox"
+              name="favela2"
+              value="2"
+              onclick="calcular()"
+            />
+            Acertou o Salto e chegou com vida
+          </p>
+        </div>
+        <div class="input-group">
+          <h3>PONTOS EXTRAS:</h3>
+          <p>
+            <input
+              type="checkbox"
+              name="pontosExtras"
+              value="1"
+              onclick="calcular()"
+            />
+            Ponto de líder
+          </p>
+        </div>
+      </div>
+    </div>
+    <script>
+      // Função para calcular a nota final
+      function calcular() {
+        let total = 0;
+
+        // Calculando as notas baseadas nas checkboxes
+        const checkboxes = [
+          "teste30s",
+          "precisaoReservatorio",
+          "precisaoLago",
+          "favela1",
+          "favela2",
+          "pontosExtras",
+          "pontosaltoExtras",
+        ];
+
+        checkboxes.forEach((nome) => {
+          let opcoes = document.getElementsByName(nome);
+          for (let opcao of opcoes) {
+            if (opcao.checked) {
+              total += parseFloat(opcao.value);
+              break;
+            }
+          }
+        });
+
+        // Subtraindo os pontos de conduta
+        let pontosConduta =
+          parseFloat(document.getElementById("descontoConduta").value) || 0;
+        total -= pontosConduta;
+
+        // Garantindo que a nota final não seja negativa
+        total = Math.max(0, total);
+
+        // Atualizando a nota final
+        document.getElementById("notaFinal").textContent = total;
+        let statusText = document.getElementById("statusText");
+        let statusDiv = document.getElementById("statusFinal");
+
+        if (total >= 7) {
+          statusDiv.className = "status aprovado";
+          statusText.textContent = "Aprovado";
+        } else {
+          statusDiv.className = "status reprovado";
+          statusText.textContent = "Reprovado";
+        }
+      }
+
+      // Função para limpar todos os campos e reiniciar a página
+      function limparTudo() {
+        // Limpar todos os campos de texto
+        document.getElementById("qr").value = "";
+        document.getElementById("id").value = "";
+        document.getElementById("instrutor").value = "";
+        document.getElementById("data").value = "";
+        document.getElementById("obs").value = "";
+        document.getElementById("descontoConduta").value = "";
+
+        // Limpar todas as checkboxes
+        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        checkboxes.forEach((checkbox) => (checkbox.checked = false));
+
+        // Limpar resultado final
+        document.getElementById("notaFinal").textContent = "0";
+        document.getElementById("statusText").textContent = "Reprovado";
+        document.getElementById("statusFinal").className = "status reprovado";
+
+        // Zerar cronômetro
+        zerarCronometro();
+      }
+
+      // Funções para o cronômetro
+      let tempo = 0;
+      let cronometroInterval;
+
+      function iniciarCronometro() {
+        document.getElementById("iniciarCronometro").disabled = true;
+        document.getElementById("pararCronometro").disabled = false;
+
+        cronometroInterval = setInterval(() => {
+          tempo++;
+          let minutos = Math.floor(tempo / 60);
+          let segundos = tempo % 60;
+          document.getElementById("cronometro").textContent = `${formatarTempo(
+            minutos
+          )}:${formatarTempo(segundos)}`;
+        }, 1000);
+      }
+
+      function pararCronometro() {
+        clearInterval(cronometroInterval);
+        document.getElementById("iniciarCronometro").disabled = false;
+        document.getElementById("pararCronometro").disabled = true;
+      }
+
+      function zerarCronometro() {
+        tempo = 0;
+        document.getElementById("cronometro").textContent = "00:00";
+        clearInterval(cronometroInterval);
+        document.getElementById("iniciarCronometro").disabled = false;
+        document.getElementById("pararCronometro").disabled = true;
+      }
+
+      function formatarTempo(t) {
+        return t < 10 ? "0" + t : t;
+      }
+    </script>
+  </body>
+</html>

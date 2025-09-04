@@ -1,0 +1,164 @@
+        body {
+            font-family: Tahoma, sans-serif;
+            font-size: 14px;
+            color: #333;
+            margin: 25px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #ffffff;
+            background-image: url("/Prova-CIAvEx/imagens/bandeira.webp");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            /* Duas colunas lado a lado */
+            gap: 20px;
+            width: 100%;
+            max-width: 1200px;
+            padding: 20px;
+            box-sizing: border-box;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .column {
+            padding: 10px;
+            border: 2px solid #ff7300;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+        }
+
+        h2 {
+            text-align: center;
+            color: #022d42;
+        }
+
+        input[type="checkbox"] {
+            transform: scale(0.8);
+            margin-right: 10px;
+        }
+
+        .input-group {
+            margin-bottom: 10px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        button {
+            margin-top: 10px;
+            padding: 8px 15px;
+            font-size: 14px;
+            cursor: pointer;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .timer {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .cronometro-container {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .cronometro-btn,
+        .cronometro-control-btn,
+        .zerar-btn {
+            margin-right: 5px;
+        }
+
+        .zerar-btn {
+            background-color: #FF9800;
+        }
+
+        .zerar-btn:hover {
+            background-color: #F57C00;
+        }
+
+        .resultado-final {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f0f0f0;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            text-align: center;
+        }
+
+        .resultado-final h3 {
+            margin: 0;
+            font-size: 18px;
+            color: #022d42;
+        }
+
+        .resultado-final .nota-final {
+            font-size: 22px;
+            font-weight: bold;
+            color: #4CAF50;
+        }
+
+        .status {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .status.aprovado {
+            color: green;
+        }
+
+        .status.reprovado {
+            color: red;
+        }
+
+        .Resposta {
+            color: rgb(5, 231, 54);
+        }
+
+        /* ================= RESPONSIVIDADE ================= */
+
+/* Tablets e telas médias (até 992px) */
+@media (max-width: 992px) {
+    .container {
+        grid-template-columns: 1fr; /* Uma coluna só */
+    }
+
+    button {
+        width: 100%;
+    }
+}
+
+/* Celulares pequenos (até 600px) */
+@media (max-width: 600px) {
+    body {
+        margin: 10px;
+        font-size: 13px;
+    }
+
+    h2 {
+        font-size: 16px;
+    }
+
+    .resultado-final .nota-final {
+        font-size: 20px;
+    }
+}

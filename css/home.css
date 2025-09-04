@@ -1,0 +1,193 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.logo {
+  width: 80px;
+  height: auto;
+}
+
+.header-text h1 {
+  font-size: 2em;
+  margin: 0;
+}
+
+.header-text h2 {
+  font-size: 1.2em;
+  margin: 5px 0;
+}
+
+.header-text p {
+  font-size: 1em;
+  font-style: italic;
+  margin-top: 5px;
+
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+  background-image: url('/Prova-CIAvEx/imagens/bandeira.webp');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+}
+
+
+.provas-box {
+  background-color: #ffffff;
+  border: 2px solid #1a2b1f;
+  border-radius: 8px;
+  padding: 30px;
+  max-width: 400px;
+  margin: 150px auto;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.provas-box h2 {
+  margin-bottom: 20px;
+  color: #1a2b1f;
+}
+
+.provas-box button {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  background-color: #5d6532;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.provas-box button:hover {
+  background-color: #272b00;
+}
+
+header,
+footer {
+  background-color: rgba(0, 0, 0, 0.5);
+  /* fundo escuro semi-transparente */
+  color: #ffffff;
+  text-align: center;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.6);
+  /* camada escura */
+  background-blend-mode: overlay;
+  /* mistura cor com imagem */
+}
+
+.footer-container p {
+  margin: 5px 0;
+}
+
+@media (max-width: 768px) {
+  .header-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+    padding: 10px;
+  }
+
+  .logo {
+    width: 60px;
+  }
+
+  .header-text h1 {
+    font-size: 1.6em;
+  }
+
+  .header-text h2 {
+    font-size: 1em;
+  }
+
+  .header-text p {
+    font-size: 0.9em;
+  }
+
+  .provas-box {
+    max-width: 90%;
+    margin: 60px auto;
+    padding: 20px;
+  }
+
+  .provas-box h2 {
+    font-size: 1.2em;
+  }
+
+  .provas-box button {
+    font-size: 0.95em;
+    padding: 10px;
+  }
+
+  footer {
+    font-size: 0.85em;
+    padding: 15px 10px;
+  }
+}
+
+/* Telas pequenas (até 480px) — celulares comuns */
+@media (max-width: 480px) {
+  .logo {
+    width: 50px;
+  }
+
+  .header-text h1 {
+    font-size: 1.4em;
+  }
+
+  .header-text h2 {
+    font-size: 0.95em;
+  }
+
+  .header-text p {
+    font-size: 0.85em;
+  }
+
+  .provas-box {
+    margin: 40px 10px;
+    padding: 15px;
+  }
+
+  .provas-box button {
+    font-size: 0.9em;
+    padding: 8px;
+  }
+
+  footer {
+    font-size: 0.75em;
+    padding: 10px;
+  }
+}

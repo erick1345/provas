@@ -294,7 +294,7 @@
         let statusText = document.getElementById("statusText");
         let statusDiv = document.getElementById("statusFinal");
 
-        if (total >= 7) {
+        if (total >= 6) {
           statusDiv.className = "status aprovado";
           statusText.textContent = "Aprovado";
         } else {
@@ -308,8 +308,6 @@
         // Limpar todos os campos de texto
         document.getElementById("qr").value = "";
         document.getElementById("id").value = "";
-        document.getElementById("instrutor").value = "";
-        document.getElementById("data").value = "";
         document.getElementById("obs").value = "";
         document.getElementById("descontoConduta").value = "";
 
@@ -321,45 +319,6 @@
         document.getElementById("notaFinal").textContent = "0";
         document.getElementById("statusText").textContent = "Reprovado";
         document.getElementById("statusFinal").className = "status reprovado";
-
-        // Zerar cronômetro
-        zerarCronometro();
-      }
-
-      // Funções para o cronômetro
-      let tempo = 0;
-      let cronometroInterval;
-
-      function iniciarCronometro() {
-        document.getElementById("iniciarCronometro").disabled = true;
-        document.getElementById("pararCronometro").disabled = false;
-
-        cronometroInterval = setInterval(() => {
-          tempo++;
-          let minutos = Math.floor(tempo / 60);
-          let segundos = tempo % 60;
-          document.getElementById("cronometro").textContent = `${formatarTempo(
-            minutos
-          )}:${formatarTempo(segundos)}`;
-        }, 1000);
-      }
-
-      function pararCronometro() {
-        clearInterval(cronometroInterval);
-        document.getElementById("iniciarCronometro").disabled = false;
-        document.getElementById("pararCronometro").disabled = true;
-      }
-
-      function zerarCronometro() {
-        tempo = 0;
-        document.getElementById("cronometro").textContent = "00:00";
-        clearInterval(cronometroInterval);
-        document.getElementById("iniciarCronometro").disabled = false;
-        document.getElementById("pararCronometro").disabled = true;
-      }
-
-      function formatarTempo(t) {
-        return t < 10 ? "0" + t : t;
       }
     </script>
   </body>
